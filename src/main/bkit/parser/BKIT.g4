@@ -25,6 +25,102 @@ options{
 	language=Python3;
 }
 
+program: (glo_vari_declare|fun_declare)+ EOF;    //thu tu cua 2 thanh phan    /////////////////////////
+
+glo_vari_declare: VAR COLON glo_variable_list SEMI ;
+glo_variable_list: vari_intval COMMA glo_variable_list | vari_intval ;
+
+vari_intval: variable (ASSIGN literal)?
+            | variable (ASSIGN array);
+variable: ID (LSB exp RSB)*;//variable: ID (LSB INTLIT RSB)*;
+array: LCB list_literal RCB;
+list_literal: t COMMA list_literal | t;
+t: array
+    | literal;
+//        | array_vari_declare;//////////////////////////////////////////
+//array_vari_declare: ID LRB
+
+// co nhat thiet ham main phai nam o cuoi cung` ?
+//fun_declare_list: fun_declare fun_declare_list | fun_declare;
+fun_declare: FUNCTION COLON ID fun_para_struct? fun_body; //sau function name, khoang trang ghi chu thi` ?
+fun_para_struct: PARAMETER COLON fun_para_list;
+fun_para_list: variable COMMA fun_para_list | variable;
+
+fun_body: BODY COLON statement_list? ENDBODY DOT;
+
+statement_list: local_vari_declare* statement_not_declare;
+statement_not_declare: statement statement_not_declare | statement;
+
+local_vari_declare: VAR COLON local_variable_list SEMI;
+local_variable_list: vari_intval_id COMMA local_variable_list | vari_intval_id;
+vari_intval_id: variable (ASSIGN array)/////dang co array o day
+            | variable (ASSIGN exp)?;
+statement: assign_stm
+        | if_stm
+        | for_stm
+        | while_stm
+        | do_while_stm
+        | break_stm
+        | continue_stm
+        | call_stm
+        | return_stm;
+assign_stm: variable ASSIGN exp SEMI;       // thieu kieu array
+if_stm: IF exp THEN statement_list?   //chua giai quyet expression ko phai la boolean
+        (ELSEIF exp THEN statement_list?)*
+        (ELSE statement_list?)?
+        ENDIF DOT;
+for_stm: FOR LB ID ASSIGN exp COMMA exp COMMA exp RB//chua giai quyet assign chi dc la integer
+        DO statement_list?
+        ENDFOR DOT;
+while_stm: WHILE exp DO statement_list? ENDWHILE DOT;//chua giai quyet expression ko phai la boolean
+do_while_stm: DO statement_list? WHILE exp ENDDO DOT;//chua giai quyet expression ko phai la boolean
+break_stm: BREAK SEMI;//is it a stm ?
+continue_stm: CONTINUE SEMI;// is it a stm ?
+call_stm: ID LB call_stm_para_list? RB SEMI;
+    call_stm_para_list: exp COMMA call_stm_para_list | exp;// co dung ko ?
+return_stm: RETURN exp? SEMI;
+
+//expression: unary | binary; //bao gom co ID va ko co ID
+//unary: (INTSUB|FLOATSUB)? operand;//(INTSUB|FLOATSUB)? operation;////////////////////////////////////////////////
+//binary: operand OPERATOR operand;
+
+//operand: (constants|variable|expression|call_stm);
+//constants: (INTSUB|FLOATSUB)? literal;// -True ?
+
+relational_op: |INTEQUAL
+                |INTNOTEQUAL
+                |INTLESS
+                |INTGREATER
+                |INTLESSEQUAL
+                |INTGREATEREQUAL
+                |FLNOTEQUAL
+                |FLLESS
+                |FLGREATER
+                |FLLESSEQUAL
+                |FLGREATEREQUAL;
+logical_op: CONJUNC | DISJUNC;
+adding_op: INTADD| FLOATADD| INTSUB| FLOATSUB;
+multiplying_op: INTMUL
+                | FLOATMUL
+                | INTDIV
+                | FLOATDIV
+                |INTREMAINDER;
+exp: exp1 relational_op exp1 | exp1;
+exp1: exp1 logical_op exp2 | exp2;
+exp2: exp2 adding_op exp3 | exp3;
+exp3: exp3 multiplying_op exp4 | exp4;
+exp4: NEG exp4 | exp5;
+exp5: (INTSUB | FLOATSUB) exp5 | exp6;
+exp6: exp6 index_operators| exp7;
+index_operators: LSB exp RSB index_operators | LSB exp RSB;
+exp7: ID LB call_stm_para_list RB operand | operand;
+
+operand: constants
+        |variable
+        |ID LB call_stm_para_list? RB
+        | literal;
+constants: (INTSUB|FLOATSUB)? literal;
+
 //program  : VAR COLON ID SEMI EOF ;
 //program: BOOLEAN;
 
@@ -32,13 +128,12 @@ options{
 
 ASSIGN: '=' ;
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS : [ \t\r\n\f]+ -> skip ; // skip spaces, tabs, newlines
 
 
-ERROR_CHAR: .;
-UNCLOSE_STRING: .;
-ILLEGAL_ESCAPE: .;
-UNTERMINATED_COMMENT: .;
+
+fragment STR_CHAR: ~[\b\t\n\f\r"'\\] | ESCAPESEQUECE;
+fragment ESC_ILLEGAL: '\\' ~[btnfr"'\\] | ~'\\' ;
 
 //PROGRAM COMMENT
 COMMENT: '**' .*? '**' -> skip;  // how about appearing in string ?      ** * * **
@@ -46,7 +141,7 @@ COMMENT: '**' .*? '**' -> skip;  // how about appearing in string ?      ** * * 
 //TOKENS SET
 
 //Identifiers
-ID: [a-z][a-zA-Z_0-9]+;
+ID: [a-z][a-zA-Z_0-9]*;
 //Keywords
 BODY: 'Body';
 BREAK: 'Break';
@@ -54,9 +149,9 @@ CONTINUE: 'Continue';
 DO: 'Do';
 ELSE: 'Else';
 ELSEIF: 'ElseIf';
-ENDBODY: 'Endbody';
+ENDBODY: 'EndBody';
 ENDIF: 'EndIf';
-ENDFOR: 'Endfor';
+ENDFOR: 'EndFor';
 ENDWHILE: 'EndWhile';
 FOR: 'For';
 FUNCTION: 'Function';
@@ -105,25 +200,28 @@ SEMI: ';' ;
 LCB: '{' ; //left curly bracket
 RCB: '}' ;
 //Literals
-INTLIT: '0'+| [1-9][0-9]* //Otherwise, the literal is 0 ????    // 00000 ?
-        | ('0x''0X')[1-9A-F][0-9A-F]*
-        | ('0o''0O')[1-7][0-7]*;
+//Otherwise, the literal is 0 ????    // 00000 ?
+INTLIT:'0'+
+        | [1-9][0-9]*
+        | ('0x'|'0X')[1-9A-F][0-9A-F]*
+        | ('0o'|'0O')[1-7][0-7]*;
 
 fragment EXPONENTPART: [Ee][+-]?[0-9]+;
-fragment INTPART: ('0'+| [1-9][0-9]*);
+fragment INTPART: ('0'+| [0-9]+);
 fragment DECIMALPART: '.'[0-9]*;
 FLOATLIT: INTPART (DECIMALPART| EXPONENTPART| DECIMALPART EXPONENTPART);
-
+//boolean
+BOOLEANLIT: 'True'|'False';
 //escape sequence is a sequence of characters that they can be in a string if they have a \ before it.
 //STRING: '\"' (('\"'|'\b'|'\f'|'\r'|'\n'|'\t'|'\''|'\\')*|~('\''))? '\"';
 fragment ESCAPESEQUECE: '\\b'|'\\f'|'\\r'|'\\n'|'\\t'|'\\\''|'\\\\';
-STRING_LIT: '"' ( ESCAPESEQUECE* ('\'"' ~('"'|'\\')* '\'"')* ~('"'|'\\')* )* '"'
+STRING_LIT: '"' ( ESCAPESEQUECE |~('\n'|'"'|'\\')| ('\'"') )* '"'
         {
             y = str(self.text)
             self.text = y[1:-1]
         };
 
-LITERAL: INTLIT | FLOATLIT | STRING | ARRAY;
+literal: INTLIT | FLOATLIT | STRING_LIT | BOOLEANLIT;
 
 /*
 ARRAYINT: LB INTLIT RB      //how about having multi dimension ?
@@ -136,61 +234,36 @@ ARRAYSTRING: LB STRING RB
         | LB STRING (COMMA STRING)+ RB;
 ARRAY: ARRAYINT | ARRAYFLOAT | ARRAYBOOLEN | ARRAYSTRING;
 */
-ARRAY: LCB LITERAL RCB    //how about having multi dimension
-        | LCB LITERAL (COMMA INTLIT)+ RCB;
+//ARRAY: LCB LITERAL RCB    //how about having multi dimension
+  //      | LCB LITERAL (COMMA INTLIT)+ RCB;
 //Generate testcase: khai bao 1 array ma trong do co nhieu kieu => error
 
 //TYPE AND VALUE
 
-//boolean
-BOOLEAN: 'True'|'False';
 
+ERROR_CHAR:.
+    {
+		raise ErrorToken(self.text)
+	};
 
-program: (vari_declare* fun_declare_list*)*;    //thu tu cua 2 thanh phan
-
-vari_declare: VAR':' variable_list SEMI ;
-variable_list: variable COMMA variable_list | variable ;
-
-variable: ID
-        | ID ASSIGN LITERAL
-        | assign_stm
-        | array_vari_declare;
-//array_vari_declare: ID LRB
-
-// co nhat thiet ham main phai nam o cuoi cung` ?
-fun_declare_list: fun_declare fun_declare_list | fun_declare;
-fun_declare: FUNCTION COLON ID fun_para_struct? fun_body; //sau function name, khoang trang ghi chu thi` ?
-fun_para_struct: PARAMETER COLON fun_para_list;
-fun_para_list: ID COMMA fun_para_list | ID;//chua co truong hop para la 1 array_vari
-
-fun_body: BODY COLON vari_declare* statement_list? ENDBODY DOT;
-
-statement_list: statement statement_list | statement;
-
-statement: assign_stm
-        | if_stm
-        | for_stm
-        | while_stm
-        | do_while_stm
-        | break_stm
-        | continue_stm
-        | call_stm
-        | return_stm;
-assign_stm: ID ASSIGN expression SEMI;       // thieu kieu array
-if_stm: IF expression THEN statement_list?   //chua giai quyet expression ko phai la boolean
-        (ELSEIF expression THEN statement_list?)*
-        (ELSE statement_list?)?
-        ENDIF DOT;
-for_stm: FOR LB assgin_stm COMMA conditionExpr COMMA updateExpr RB //chua giai quyet assign chi dc la integer
-        DO statement_list?
-        ENDFOR DOT;
-while_stm: WHILE expression DO statement_list? ENDWHILE DOT;//chua giai quyet expression ko phai la boolean
-do_while_stm: DO statement_list? WHILE expression ENDDO DOT;//chua giai quyet expression ko phai la boolean
-break_stm: BREAK SEMI;//is it a stm ?
-continue_stm: CONTINUE SEMI;// is it a stm ?
-call_stm: ID LB call_stm_para_list? RB SEMI;
-    call_stm_para_list: expression COMMA call_stm_para_list | expression;// co dung ko ?
-return_stm: RETURN expression? SEMI// co truong hop RETURN function ko ?
-           | RETURN call_stm SEMI;
-
-expression: unary | binary; //bao gom co ID va ko co ID
+UNCLOSE_STRING: '"' STR_CHAR* ( [\b\t\n\f\r"'\\] | EOF )
+	{
+		y = str(self.text)
+		possible = ['\b', '\t', '\n', '\f', '\r', '"', "'", '\\']
+		if y[-1] in possible:
+			raise UncloseString(y[1:-1])
+		else:
+			raise UncloseString(y[1:])
+	}
+	;
+ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL
+	{
+		y = str(self.text)
+		raise IllegalEscape(y[1:])
+	}
+	;
+//UNTERMINATED_COMMENT: '**' ~'*' EOF
+//    {
+//        raise UnterminatedComment()
+//    };
+UNTERMINATED_COMMENT:'**' .*?;

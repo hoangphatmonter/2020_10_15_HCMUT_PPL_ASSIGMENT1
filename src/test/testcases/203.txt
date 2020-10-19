@@ -1,0 +1,23 @@
+ ** Function to sort an array of size n **
+                Function: sort 
+                    Parameter: a, n
+                    Body:
+                        Var: i, j, tmp;
+                        For (i = 0, i < n - 1, 1) Do
+                            For (j = i, j < n - 1, 1) Do
+                                If a[j] > a[j + 1] Then
+                                  ** Make a swap **
+                                    tmp = a[j + 1];
+                                    a[j + 1] = a[j];
+                                    a[j] = tmp;
+                                EndIf.
+                            EndFor.
+                        EndFor.
+                        Return a;
+                    EndBody.
+                Function: main
+                    Body:
+                        Var: arr[5] = {5, 4, 3, 2, 1};
+                        print(sort(arr));
+                    EndBody.
+            

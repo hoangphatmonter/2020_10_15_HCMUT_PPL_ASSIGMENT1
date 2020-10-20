@@ -1,0 +1,7 @@
+Function: all
+        Body:
+            Var : t = t+5;
+            While(t!= 5)Do
+                t = t+1;
+            EndWhile.
+            Var : x = x+3

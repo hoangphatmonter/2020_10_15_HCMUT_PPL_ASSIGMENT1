@@ -25,11 +25,13 @@ options{
 	language=Python3;
 }
 
-program: (glo_vari_declare|fun_declare)+ EOF;    //thu tu cua 2 thanh phan    /////////////////////////
+program: (glo_vari_declare|fun_declare)* EOF;    //thu tu cua 2 thanh phan    /////////////////////////
 
 glo_vari_declare: VAR COLON glo_variable_list SEMI ;
 glo_variable_list: vari_intval COMMA glo_variable_list | vari_intval ;
 
+//vari_intval: ID (LSB INTLIT RSB)* (ASSIGN literal)?
+//            | ID (LSB INTLIT RSB)* (ASSIGN array)?;
 vari_intval: variable (ASSIGN literal)?
             | variable (ASSIGN array);
 variable: ID (LSB exp RSB)*;//variable: ID (LSB INTLIT RSB)*;
@@ -118,7 +120,8 @@ exp7: ID LB call_stm_para_list RB operand | operand;
 operand: constants
         |variable
         |ID LB call_stm_para_list? RB
-        | literal;
+        | literal
+        | LB exp RB;
 constants: (INTSUB|FLOATSUB)? literal;
 
 //program  : VAR COLON ID SEMI EOF ;

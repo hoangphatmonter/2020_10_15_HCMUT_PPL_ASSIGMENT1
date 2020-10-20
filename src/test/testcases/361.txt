@@ -1,0 +1,4 @@
+Function: while
+        Body:
+            Do t=5; While t!=5 EndDo.
+        EndBody.

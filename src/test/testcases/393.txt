@@ -1,0 +1,4 @@
+Function: all
+        Body:
+            t = !(t+1);
+        EndBody.

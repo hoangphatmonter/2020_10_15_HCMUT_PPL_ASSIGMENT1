@@ -1,0 +1,4 @@
+Function: while
+        Body:
+            While (t!=5) Do EndWhile.
+        EndBody.

@@ -1,0 +1,3 @@
+Function: t5
+        Body:
+            body = foo() +. 5;

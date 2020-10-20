@@ -1,0 +1,8 @@
+Function: q9
+        Body:
+            If expression Then statement=5;
+            ElseIf expression Then statement=4;
+            ElseIf expression Then statement=3;
+            Else statement;
+            EndIf.
+        EndBody.

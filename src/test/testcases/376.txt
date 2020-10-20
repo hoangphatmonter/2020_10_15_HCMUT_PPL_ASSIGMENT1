@@ -1,0 +1,4 @@
+Funtion: z
+        Body:
+            Var: t = foo(5+6);
+        EndBody.

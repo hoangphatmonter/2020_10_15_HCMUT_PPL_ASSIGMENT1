@@ -1,0 +1,4 @@
+Function: all
+        Body:
+            True&&False;
+        EndBody.

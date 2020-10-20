@@ -32,47 +32,47 @@ class LexerSuite(unittest.TestCase):
 
     def test_float_token_1(self):
         """test numbers of token"""
-        self.assertTrue(TestLexer.checkLexeme("""012.e5""","""012.e5,<EOF>""",101))
+        self.assertTrue(TestLexer.checkLexeme("""012.e5""","""012.e5,<EOF>""",201))
 
     def test_float_token_2(self):
         """test numbers of token"""
-        self.assertTrue(TestLexer.checkLexeme("""0e5""","""0e5,<EOF>""",102))
+        self.assertTrue(TestLexer.checkLexeme("""0e5""","""0e5,<EOF>""",202))
 
     def test_random_char_1(self):  # ???????
         """test numbers of token"""
-        self.assertTrue(TestLexer.checkLexeme("""t'h""", """t,Error Token '""", 103))
+        self.assertTrue(TestLexer.checkLexeme("""t'h""", """t,Error Token '""", 203))
 
     def test_random_char_2(self): #???????
         """test identifiers of token"""
-        self.assertTrue(TestLexer.checkLexeme("""Pazz""","""Error Token P""",104))
+        self.assertTrue(TestLexer.checkLexeme("""Pazz""","""Error Token P""",204))
 
     def test_random_char_3(self): #???????
         """test numbers of token"""
-        self.assertTrue(TestLexer.checkLexeme("""t_____t""","""t_____t,<EOF>""",105))
+        self.assertTrue(TestLexer.checkLexeme("""t_____t""","""t_____t,<EOF>""",205))
 
     def test_vari_declare_1(self):
         """test variable declaration"""
-        self.assertTrue(TestLexer.checkLexeme("""Var: a;""","""Var,:,a,;,<EOF>""", 106))
+        self.assertTrue(TestLexer.checkLexeme("""Var: a;""","""Var,:,a,;,<EOF>""", 206))
 
 
     def test_vari_declare_2(self):
         """test variable declaration"""
-        self.assertTrue(TestLexer.checkLexeme("""Var: a, b, c;""", """Var,:,a,,,b,,,c,;,<EOF>""", 107))
+        self.assertTrue(TestLexer.checkLexeme("""Var: a, b, c;""", """Var,:,a,,,b,,,c,;,<EOF>""", 207))
 
 
     def test_vari_declare_3(self):  #need some output declaration
         """test variable declaration"""
-        self.assertTrue(TestLexer.checkLexeme("""Var a;""", """Var,a,;,<EOF>""", 108))
+        self.assertTrue(TestLexer.checkLexeme("""Var a;""", """Var,a,;,<EOF>""", 208))
 
 
     def test_vari_declare_4(self):  # need some output declaration
         """test variable declaration"""
-        self.assertTrue(TestLexer.checkLexeme("""Var a,b,c""", """Var,a,,,b,,,c,<EOF>""", 109))
+        self.assertTrue(TestLexer.checkLexeme("""Var a,b,c""", """Var,a,,,b,,,c,<EOF>""", 209))
 
 
     def test_vari_declare_5(self):  # need some output declaration
         """test variable declaration"""
-        self.assertTrue(TestLexer.checkLexeme("""Var ,a,b;""", """Var,,,a,,,b,;,<EOF>""", 110))
+        self.assertTrue(TestLexer.checkLexeme("""Var ,a,b;""", """Var,,,a,,,b,;,<EOF>""", 210))
 
 
     def test_vari_declare_6(self):  # need some output declaration
@@ -381,6 +381,9 @@ class LexerSuite(unittest.TestCase):
 
     def test_string_12(self):
         self.assertTrue(TestLexer.checkLexeme(""" "abc\b""","""Unclosed String: abc""",196))
+
+    def test_string_13(self):
+        self.assertTrue(TestLexer.checkLexeme(""" "abc'bc" ""","""Illegal Escape In String: '""",197))
     #ket hop giua string va number
     # "skldfjdls => Unclosed string skldfjdls
     #string with comment in string ?

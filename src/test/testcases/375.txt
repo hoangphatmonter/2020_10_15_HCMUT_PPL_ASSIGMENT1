@@ -1,0 +1,4 @@
+Function: t
+        Body:
+            foo(9);
+        EndBody.

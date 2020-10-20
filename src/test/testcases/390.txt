@@ -1,0 +1,4 @@
+Function: all
+        Body:
+            t[4][3] = 6\3 % 4 + 5 - 4 ;
+        EndBody.

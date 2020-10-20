@@ -2,20 +2,120 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7042b7b-3f5c-4f5e-b5ff-a815ba26ab22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/bkit/parser/BKIT.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/bkit/parser/BKIT.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LexerSuite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/ParserSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ParserSuite.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/solutions/1001.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/1001.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/testcases/1001.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/1001.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1003.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1004.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1005.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1006.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1007.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1008.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1009.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/101.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1010.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1012.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1013.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1014.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1015.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1016.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1017.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1018.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1019.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/102.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1020.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1021.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1022.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1023.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/1024.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/103.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/104.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/105.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/106.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/107.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/201.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/202.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2025.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2026.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2027.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2028.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2029.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/203.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2030.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2031.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2032.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2033.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2034.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2035.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2036.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2037.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2038.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2039.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2040.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2041.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2042.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2043.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2044.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2045.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2046.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2047.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2048.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2049.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2050.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2051.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2052.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2053.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2054.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2055.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2056.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2057.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2058.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2059.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2060.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2061.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2062.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2063.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2064.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2065.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2066.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2067.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2068.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2069.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2070.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2071.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2072.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2073.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2074.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2075.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2076.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2077.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2078.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2079.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2080.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2081.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2082.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2083.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2084.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2085.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2086.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2087.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2088.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2089.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2090.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2091.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2092.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2093.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2094.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2095.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/2096.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/solutions/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/solutions/301.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/testcases/301.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/testcases/301.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BKIT.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKIT.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/BKIT.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKIT.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/BKITLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKITLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/BKITLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKITLexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/BKITLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKITLexer.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BKITParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKITParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/BKITVisitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/target/BKITVisitor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +125,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/bkit/parser/BKIT.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            <state relative-caret-position="259">
+              <caret line="55" column="36" lean-forward="true" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -37,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/LexerSuite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="382" column="92" lean-forward="true" selection-start-line="382" selection-start-column="92" selection-end-line="382" selection-end-column="92" />
+            <state relative-caret-position="251">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -46,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/ParserSuite.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
+            <state relative-caret-position="87">
+              <caret line="233" column="42" lean-forward="true" selection-start-line="233" selection-start-column="42" selection-end-line="233" selection-end-column="42" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -67,6 +167,11 @@
       <find>EndFor</find>
       <find>&quot;&quot;&quot; &quot;ta la&quot; &quot; &quot;&quot;&quot;</find>
       <find>&quot;&quot;&quot; &quot;my\ name&quot; &quot;&quot;&quot;</find>
+      <find>Parameter</find>
+      <find>test_local</find>
+      <find>36</find>
+      <find>364</find>
+      <find>327</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,16 +180,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/ParserSuite.py" />
         <option value="$PROJECT_DIR$/src/test/LexerSuite.py" />
         <option value="$PROJECT_DIR$/src/main/bkit/parser/BKIT.g4" />
+        <option value="$PROJECT_DIR$/src/test/ParserSuite.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="952" />
     <option name="width" value="977" />
-    <option name="height" value="523" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -92,6 +197,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,7 +241,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,6 +366,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24327958" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -276,7 +382,7 @@
       <window_info anchor="bottom" id="Tool Output" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3295129" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="ANTLR Preview" order="11" visible="true" weight="0.5329513" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="11" weight="0.72636104" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -308,20 +414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ParserSuite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="49" column="60" selection-start-line="49" selection-start-column="60" selection-end-line="49" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/LexerSuite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="382" column="92" lean-forward="true" selection-start-line="382" selection-start-column="92" selection-end-line="382" selection-end-column="92" />
+        <state relative-caret-position="251">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -330,8 +426,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/bkit/parser/BKIT.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        <state relative-caret-position="259">
+          <caret line="55" column="36" lean-forward="true" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ParserSuite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="233" column="42" lean-forward="true" selection-start-line="233" selection-start-column="42" selection-end-line="233" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

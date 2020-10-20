@@ -1,0 +1,5 @@
+Function: for
+        Body:
+            For(a=5, a!= 6, a-1)
+            EndFor.
+        EndBody.

@@ -1,0 +1,6 @@
+Function: c
+        Body:
+            For(t=5, t!=6, t+1) Do
+                If(t==5 )Continue; EndIf.
+            EndFor.
+        EndBody.

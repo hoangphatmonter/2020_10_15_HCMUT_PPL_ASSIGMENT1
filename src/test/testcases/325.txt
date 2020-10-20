@@ -1,0 +1,7 @@
+Function: foo
+        Body:
+            Var: i = 3;
+            While (True) Do
+            EndWhile.
+            Var: z = 5;
+        EndBody.

@@ -1,0 +1,1 @@
+While a!=5 Do statement;EndWhile.

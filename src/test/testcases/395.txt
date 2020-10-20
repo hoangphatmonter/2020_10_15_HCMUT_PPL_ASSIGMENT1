@@ -1,0 +1,4 @@
+Function: all
+        Body:
+            t= [6]
+        EndBody.

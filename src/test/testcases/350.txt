@@ -1,0 +1,7 @@
+Function: for
+        Body:
+            For(z=5,z,z) Do
+                foo();
+                z=5;
+            EndFor.
+        EndBody.

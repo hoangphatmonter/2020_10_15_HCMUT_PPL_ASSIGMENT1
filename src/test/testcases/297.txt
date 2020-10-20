@@ -1,0 +1,3 @@
+Function: all
+        Body:
+            t = ==6;

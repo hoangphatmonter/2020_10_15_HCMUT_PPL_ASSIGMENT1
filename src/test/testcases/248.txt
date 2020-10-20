@@ -1,0 +1,6 @@
+Function: for
+        Body:
+            For (t=4, t<10) Do
+                t = t+1;
+            EndFor.
+        EndBody.

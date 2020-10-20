@@ -1,0 +1,4 @@
+Function: x9
+        Body:
+            vari = (5+6);
+        EndBody.

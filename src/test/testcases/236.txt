@@ -1,0 +1,4 @@
+Function: x_5
+        Body:
+            foo() = body;
+        EndBody.

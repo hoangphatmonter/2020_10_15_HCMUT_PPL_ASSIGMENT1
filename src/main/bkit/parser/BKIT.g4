@@ -25,20 +25,20 @@ options{
 	language=Python3;
 }
 
-program: (glo_vari_declare|fun_declare)* EOF;    //thu tu cua 2 thanh phan    /////////////////////////
+program: glo_vari_declare*fun_declare* EOF;    //thu tu cua 2 thanh phan    /////////////////////////
 
 glo_vari_declare: VAR COLON glo_variable_list SEMI ;
 glo_variable_list: vari_intval COMMA glo_variable_list | vari_intval ;
 
-//vari_intval: ID (LSB INTLIT RSB)* (ASSIGN literal)?
-//            | ID (LSB INTLIT RSB)* (ASSIGN array)?;
-vari_intval: variable (ASSIGN literal)?
-            | variable (ASSIGN array);
+vari_intval: ID (LSB INTLIT RSB)* (ASSIGN literal)?
+            | ID (LSB INTLIT RSB)* (ASSIGN array)?;
+//vari_intval: variable (ASSIGN literal)?
+//            | variable (ASSIGN array);
 variable: ID (LSB exp RSB)*;//variable: ID (LSB INTLIT RSB)*;
-array: LCB list_literal RCB;
-list_literal: t COMMA list_literal | t;
-t: array
-    | literal;
+array: LCB list_literal RCB
+        | LCB RCB;
+list_literal: literal COMMA list_literal | literal;
+
 //        | array_vari_declare;//////////////////////////////////////////
 //array_vari_declare: ID LRB
 
@@ -46,17 +46,18 @@ t: array
 //fun_declare_list: fun_declare fun_declare_list | fun_declare;
 fun_declare: FUNCTION COLON ID fun_para_struct? fun_body; //sau function name, khoang trang ghi chu thi` ?
 fun_para_struct: PARAMETER COLON fun_para_list;
-fun_para_list: variable COMMA fun_para_list | variable;
+//fun_para_list: variable COMMA fun_para_list | variable;
+fun_para_list: ID (LSB INTLIT RSB)* COMMA fun_para_list | ID (LSB INTLIT RSB)*;
 
 fun_body: BODY COLON statement_list? ENDBODY DOT;
 
-statement_list: local_vari_declare* statement_not_declare;
+statement_list: glo_vari_declare* statement_not_declare*;
 statement_not_declare: statement statement_not_declare | statement;
 
-local_vari_declare: VAR COLON local_variable_list SEMI;
-local_variable_list: vari_intval_id COMMA local_variable_list | vari_intval_id;
-vari_intval_id: variable (ASSIGN array)/////dang co array o day
-            | variable (ASSIGN exp)?;
+//local_vari_declare: VAR COLON local_variable_list SEMI;
+//local_variable_list: vari_intval_id COMMA local_variable_list | vari_intval_id;
+//vari_intval_id: variable (ASSIGN array)/////dang co array o day
+//            | variable (ASSIGN exp)?;
 statement: assign_stm
         | if_stm
         | for_stm
@@ -66,7 +67,8 @@ statement: assign_stm
         | continue_stm
         | call_stm
         | return_stm;
-assign_stm: variable ASSIGN exp SEMI;       // thieu kieu array
+//assign_stm: variable ASSIGN exp SEMI;
+assign_stm: exp ASSIGN exp SEMI;       // thieu kieu array
 if_stm: IF exp THEN statement_list?   //chua giai quyet expression ko phai la boolean
         (ELSEIF exp THEN statement_list?)*
         (ELSE statement_list?)?
@@ -89,7 +91,7 @@ return_stm: RETURN exp? SEMI;
 //operand: (constants|variable|expression|call_stm);
 //constants: (INTSUB|FLOATSUB)? literal;// -True ?
 
-relational_op: |INTEQUAL
+relational_op: INTEQUAL
                 |INTNOTEQUAL
                 |INTLESS
                 |INTGREATER
@@ -119,7 +121,7 @@ exp7: ID LB call_stm_para_list RB operand | operand;
 
 operand: constants
         |variable
-        |ID LB call_stm_para_list? RB
+        |ID LB call_stm_para_list? RB // call_stm without ;
         | literal
         | LB exp RB;
 constants: (INTSUB|FLOATSUB)? literal;
@@ -132,11 +134,6 @@ constants: (INTSUB|FLOATSUB)? literal;
 ASSIGN: '=' ;
 
 WS : [ \t\r\n\f]+ -> skip ; // skip spaces, tabs, newlines
-
-
-
-fragment STR_CHAR: ~[\b\t\n\f\r"'\\] | ESCAPESEQUECE;
-fragment ESC_ILLEGAL: '\\' ~[btnfr"'\\] | ~'\\' ;
 
 //PROGRAM COMMENT
 COMMENT: '**' .*? '**' -> skip;  // how about appearing in string ?      ** * * **
@@ -204,7 +201,7 @@ LCB: '{' ; //left curly bracket
 RCB: '}' ;
 //Literals
 //Otherwise, the literal is 0 ????    // 00000 ?
-INTLIT:'0'+
+INTLIT:'0'
         | [1-9][0-9]*
         | ('0x'|'0X')[1-9A-F][0-9A-F]*
         | ('0o'|'0O')[1-7][0-7]*;
@@ -217,14 +214,17 @@ FLOATLIT: INTPART (DECIMALPART| EXPONENTPART| DECIMALPART EXPONENTPART);
 BOOLEANLIT: 'True'|'False';
 //escape sequence is a sequence of characters that they can be in a string if they have a \ before it.
 //STRING: '\"' (('\"'|'\b'|'\f'|'\r'|'\n'|'\t'|'\''|'\\')*|~('\''))? '\"';
-fragment ESCAPESEQUECE: '\\b'|'\\f'|'\\r'|'\\n'|'\\t'|'\\\''|'\\\\';
-STRING_LIT: '"' ( ESCAPESEQUECE |~('\n'|'"'|'\\')| ('\'"') )* '"'
+//fragment ESCAPESEQUECE: '\\b'|'\\f'|'\\r'|'\\n'|'\\t'|'\\\''|'\\\\';
+fragment ESCAPESEQUECE: '\\'[bfrnt'\\];
+//fragment STR_CHAR: ~[\b\f\r\n\t'\\"] | ESCAPESEQUECE;
+fragment STR_CHARACTER: ESCAPESEQUECE |~('\n'|'"'|'\\'|'\'')| ('\'"');
+STRING_LIT: '"' STR_CHARACTER* '"'
         {
-            y = str(self.text)
-            self.text = y[1:-1]
+            a = str(self.text)
+            self.text = a[1:-1]
         };
 
-literal: INTLIT | FLOATLIT | STRING_LIT | BOOLEANLIT;
+literal: INTLIT | FLOATLIT | STRING_LIT | BOOLEANLIT | array;
 
 /*
 ARRAYINT: LB INTLIT RB      //how about having multi dimension ?
@@ -242,27 +242,25 @@ ARRAY: ARRAYINT | ARRAYFLOAT | ARRAYBOOLEN | ARRAYSTRING;
 //Generate testcase: khai bao 1 array ma trong do co nhieu kieu => error
 
 //TYPE AND VALUE
+//fragment ESC_ILLEGAL: '\\' ~[btnfr"'\\] | ~'\\' | '\''~'"';
+fragment ESC_ILLEGAL: '\\' ~[btnfr"'\\] | '\''~'"';
 
 
-ERROR_CHAR:.
-    {
-		raise ErrorToken(self.text)
-	};
-
-UNCLOSE_STRING: '"' STR_CHAR* ( [\b\t\n\f\r"'\\] | EOF )
+//UNCLOSE_STRING: '"' STR_CHARACTER* ( '\\'[btnfr'"\\] | EOF )      //2 dong la khac nhau
+UNCLOSE_STRING: '"' STR_CHARACTER* ( [\b\t\n\f\r'\\] | EOF )
 	{
-		y = str(self.text)
-		possible = ['\b', '\t', '\n', '\f', '\r', '"', "'", '\\']
-		if y[-1] in possible:
-			raise UncloseString(y[1:-1])
+		a = str(self.text)
+		possible = ['\b', '\t', '\n', '\f', '\r',  "'", '\\']
+		if a[-1] in possible:
+			raise UncloseString(a[1:-1])
 		else:
-			raise UncloseString(y[1:])
+			raise UncloseString(a[1:])
 	}
 	;
-ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL
+ILLEGAL_ESCAPE: '"' STR_CHARACTER* ESC_ILLEGAL
 	{
-		y = str(self.text)
-		raise IllegalEscape(y[1:])
+		a = str(self.text)
+		raise IllegalEscape(a[1:])
 	}
 	;
 //UNTERMINATED_COMMENT: '**' ~'*' EOF
@@ -270,3 +268,8 @@ ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL
 //        raise UnterminatedComment()
 //    };
 UNTERMINATED_COMMENT:'**' .*?;
+
+ERROR_CHAR:.
+    {
+		raise ErrorToken(self.text)
+	};

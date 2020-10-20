@@ -44,11 +44,6 @@ class BKITVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by BKITParser#t.
-    def visitT(self, ctx:BKITParser.TContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by BKITParser#fun_declare.
     def visitFun_declare(self, ctx:BKITParser.Fun_declareContext):
         return self.visitChildren(ctx)
@@ -76,21 +71,6 @@ class BKITVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by BKITParser#statement_not_declare.
     def visitStatement_not_declare(self, ctx:BKITParser.Statement_not_declareContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKITParser#local_vari_declare.
-    def visitLocal_vari_declare(self, ctx:BKITParser.Local_vari_declareContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKITParser#local_variable_list.
-    def visitLocal_variable_list(self, ctx:BKITParser.Local_variable_listContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by BKITParser#vari_intval_id.
-    def visitVari_intval_id(self, ctx:BKITParser.Vari_intval_idContext):
         return self.visitChildren(ctx)
 
 

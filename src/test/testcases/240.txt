@@ -1,0 +1,4 @@
+Function: y8_com
+        Body:
+            vari = "Hello\nworld";
+        EndBody.

@@ -1,0 +1,4 @@
+Function: tamG
+        Body:
+            vari = +;
+        EndBody.

@@ -1,0 +1,4 @@
+Function: all
+        Body:
+            a[6] = 7==5;
+        EndBody.

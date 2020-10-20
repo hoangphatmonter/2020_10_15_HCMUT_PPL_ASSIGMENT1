@@ -1,0 +1,6 @@
+Function: for
+        Body:
+            For (scalar = init, condi, update) Do
+                statement = 5;
+            EndFor.
+        EndBody.

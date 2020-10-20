@@ -1,0 +1,8 @@
+Function:g5
+        Body:
+            If False Then
+            ElseIf True Then t[4] = {5};
+            ElseIf True Then t[4] = {5};
+            Else 
+            EndIf.
+        EndBody.

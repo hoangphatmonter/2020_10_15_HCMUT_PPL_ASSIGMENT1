@@ -1,0 +1,4 @@
+Function: t
+        Body:
+            Return 5;
+        EndBody.

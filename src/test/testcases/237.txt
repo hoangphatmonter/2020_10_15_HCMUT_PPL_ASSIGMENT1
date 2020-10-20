@@ -1,0 +1,4 @@
+Function: x_6
+        Body:
+            vari = vari;
+        EndBody.

@@ -1,0 +1,4 @@
+Function: a
+        Parameter: t[6]=5
+        Body:
+        EndBody.

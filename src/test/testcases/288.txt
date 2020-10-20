@@ -1,0 +1,4 @@
+Function:all
+        Body:
+            a = t(6) + t[6] +. 6 \. 3 +4;
+        EndBody.

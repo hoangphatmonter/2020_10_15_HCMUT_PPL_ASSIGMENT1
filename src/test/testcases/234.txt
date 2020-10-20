@@ -1,0 +1,4 @@
+Function: z9
+        Body:
+            man=t=x;
+        EndBody.

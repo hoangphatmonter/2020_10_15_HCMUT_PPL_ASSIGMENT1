@@ -1,0 +1,6 @@
+Function:z5_
+        Body:
+            If False Then ;
+            ElseIf True Then t=g;
+            EndIf.
+        EndBody.
